@@ -8,6 +8,7 @@ import Articles from './components/Articles/article.vue'
 import Contact from './components/Contact/index.vue'
 import Home from './components'
 import  Article from './components/Articles/article.vue'
+import NotFound from './components/404.vue'
 
 const app =  createApp(App);
 
@@ -18,6 +19,7 @@ const routes = createRouter({
         {path: "/articles", component: Articles},
         {path: "/contact", component: Contact},
         {path: "/articles/:id", component: Article},
+        {path: "/:notFound(.*)", component: NotFound},
        
     ]
 })
