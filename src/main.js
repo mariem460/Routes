@@ -16,9 +16,11 @@ const routes = createRouter({
     history: createWebHistory(),
     routes: [
         {path: "/", component: Home},
-        {path: "/articles", component: Articles},
+        {path: "/articles", component: Articles, children:[
+             {path: ":id", component: Article},
+    ]},
+    //child route for articles route
         {path: "/contact", component: Contact},
-        {path: "/articles/:id", component: Article},
         {path: "/:notFound(.*)", component: NotFound},
        
     ]
