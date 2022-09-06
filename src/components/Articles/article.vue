@@ -1,4 +1,6 @@
 <template>
+<div v-if="Object.keys(article).length!== 0">
+
 
 <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
     <div class="col-md-6 px-0">
@@ -16,7 +18,7 @@
 
 
       <article class="blog-post">
-        <p class="blog-post-meta">December 14, 2020 by <strong>Chris</strong></p>
+        <p class="blog-post-meta">{{article.date}}<strong>{{article.author}}</strong></p>
 
         <p>Consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         <ul>
@@ -38,5 +40,35 @@
       </div>
     </div>
   </div>
+</div>
+
+<div v-else>
+  <h1>Not found</h1>
+
+</div>
 
 </template>
+
+<script>
+  import axios from 'axios'
+
+  export default {
+    data() {
+      return {
+        article: {}
+      }
+
+    },
+      mounted() {
+          console.log("route", this.$route)
+          console.log(this.$route.params.id)
+          const articleId = this.$route.params.id;
+          axios.get(`http://localhost:3000/articles/${articleId}`)
+          .then((response)=> {
+            this.article = response.data
+          })
+          
+      },
+  }
+</script>
+ 

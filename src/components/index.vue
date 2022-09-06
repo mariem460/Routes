@@ -20,10 +20,22 @@
         <div class="h-100 p-5 bg-light border rounded-3">
           <h2>Nam libero tempore, cum soluta nobis.</h2>
           <p>Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. </p>
-          <button class="btn btn-outline-secondary" type="button">Read more</button>
+          <button class="btn btn-outline-secondary" type="button" @click="readMore()">Read more</button>
         </div>
       </div>
     </div>
 
 
 </template>
+
+<script>
+  export default {
+    methods: {
+      readMore() {
+        this.$router.push('/articles')
+      }
+
+    }
+
+  }
+</script>
